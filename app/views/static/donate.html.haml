@@ -1,20 +1,29 @@
-- content_for :page_title, "Donate to the OpenAustralia Foundation"
+- content_for :page_title, "Donate"
 %h3= yield :page_title
 
-%p
-  PlanningAlerts is brought to you by the charity the OpenAustralia Foundation. We are
-  = link_to "a Charitable Institution with Deductible Gift Recipient (DGR) status", "http://abr.business.gov.au/SearchByAbn.aspx?abn=24138089942"
-  which means that any donation you make over $2 is <strong>tax deductible</strong>.
+%p 
+  You can support PlanningAlerts with a monetary donation to the OpenAustralia Foundation.
 
-%p
-  To date the OpenAustralia Foundation has achieved much on minimal funding and generous volunteer input. To maintain the services we offer and to build new and exciting projects however, we need the financial support of the public.
+%div(style="display: table; text-align: center; width: 90%; margin: auto; margin-bottom: 2em")
+  %div(style="width: 30%; margin-right: 1em; display: table-cell; background-color: #efe")
+    %h4.number
+      %strong $10
+    %p Keeps our servers running
+  %div(style="width: 30%; margin: 1em; display: table-cell; background-color: #efd")
+    %h4.number 
+      %strong $60
+    %p Helps fix a scraper
+  %div(style="width: 30%; margin: 1em; display: table-cell; background-color: #efe")
+    %h4.number
+      %strong $500
+    %p Funds a new feature
 
-%p
-  We're very proud of what we have achieved and would like to continue growing and providing a free service to the community. Your donations will help us do this. So, please make a tax-deductible donation. We will put your donation to work straight away.
 
-%p
-  The donation button below will take you to the secure PlanningAlerts donation page at the OpenAustralia Foundation website.
-  Thank you for your support!
-
-%p
+%p(style="text-align: center")
   = link_to "Donate", "https://www.openaustraliafoundation.org.au/donate/planningalerts/", :class => "button button-rounded button-action button-large"
+
+%p.attention
+  %small
+    We are
+    = link_to "a Charitable Institution with Deductible Gift Recipient (DGR) status", "http://abr.business.gov.au/SearchByAbn.aspx?abn=24138089942"
+    which means that any donation you make over $2 is <strong>tax deductible</strong>.
