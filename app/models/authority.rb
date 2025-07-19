@@ -7,7 +7,7 @@ class Authority < ApplicationRecord
   has_many :applications, dependent: :restrict_with_exception
   has_many :comments, through: :applications
   has_one :github_issue, dependent: :destroy
-  has_paper_trail ignore: %i[last_scraper_run_log boundary]
+  has_paper_trail ignore: %i[last_scraper_run_log geom]
 
   validate :short_name_encoded_is_unique
 
@@ -115,7 +115,7 @@ class Authority < ApplicationRecord
   end
 
   # TODO: Replace this with using friendly_id gem
-  # TODO: Also loads the whole boundary into memory. Do we want this?
+  # TODO: Also loads the whole geom into memory. Do we want this?
   sig { params(name: String).returns(T.nilable(Authority)) }
   def self.find_short_name_encoded(name)
     id = find_id_short_name_encoded(name)
@@ -145,7 +145,7 @@ class Authority < ApplicationRecord
 
   sig { returns(ActiveRecord::Relation) }
   def alerts
-    # Doing this as a sub-query so we don't send a long boundary string to the database
-    Alert.active.where("ST_Covers((?), lonlat)", Authority.where(id:).limit(1).select(:boundary))
+    # Doing this as a sub-query so we don't send a long geom string to the database
+    Alert.active.where("ST_Covers((?), lonlat)", Authority.where(id:).limit(1).select(:geom))
   end
 end
